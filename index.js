@@ -21,3 +21,23 @@ const getRotateDeg = (input) => {
         return `${degIncrement * 3}deg`;
     }
 };
+
+const onMouseMove = (event) => {
+    const {target} = event;
+    const rect = target.getBoundingClientRect();
+
+    const rotateX = getRotateDeg(
+        event.clientY - rect.top
+    );
+
+    const rotateY = getRotateDeg(
+        event.clientX - rect.left
+    );
+
+    card.style.transform = `rotateX(${rotateX})
+                            rotateY(${rotateY})`;
+};
+
+const onMouseLeave = () => {
+    card.style.transform = `none`;
+};
